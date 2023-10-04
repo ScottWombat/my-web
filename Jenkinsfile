@@ -80,7 +80,7 @@ pipeline {
                                       passwordVariable: 'PASSWORD')]) {
                                 
                     sh 'curl -u ' + USERNAME + ':' + PASSWORD + ' -X GET "http://192.168.62.188:8081/repository/maven-nexus-repo/com/myweb/app/my-web/1.0/my-web-1.0.war" --output my-web.war'
-                    sh 'scp ${WORKSPACE}/my-web.war revit@192.168.62.203:/opt/tomcat/webapps'
+                    sh 'scp revit@192.168.62.199:${WORKSPACE}/my-web.war revit@192.168.62.203:/opt/tomcat/webapps'
             }
           }
        }
