@@ -1,0 +1,6 @@
+.gradle/
+.vscode/
+build/
+target/
+.git/
+tmp
