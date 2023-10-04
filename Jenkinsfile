@@ -78,8 +78,8 @@ pipeline {
                   withCredentials([usernamePassword(credentialsId: 'my-tomcat-cred',
                                       usernameVariable: 'USERNAME',
                                       passwordVariable: 'PASSWORD')]) {
-                    sh 'curl -u ' + USERNAME + ':' + PASSWORD + ' -X GET "http://192.168.62.188:8081/repository/maven-nexus-repo/com/myweb/app/my-web/1.0/my-web-1.0.war" --output "my-web.war"'
-                    sh 'scp "my-war.war" revit@192.168.62.203:/opt/tomcat/webapps'
+                    sh 'curl -u ' + USERNAME + ':' + PASSWORD + ' -X GET "http://192.168.62.188:8081/repository/maven-nexus-repo/com/myweb/app/my-web/1.0/my-web-1.0.war" --output my-web.war'
+                    sh 'scp my-war.war revit@192.168.62.203:/opt/tomcat/webapps'
             }
           }
        }
