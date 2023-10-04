@@ -85,7 +85,7 @@ pipeline {
 
        stage('Deploy war on Tomcat'){
             steps{
-                 sh 'scp ${WORKSPACE}/my-web.war tomcat@192.168.62.203:/opt/tomcat/webapps'
+                 sh 'scp ${WORKSPACE}/my-web.war revit@192.168.62.203:/opt/tomcat/webapps'
             }
        }
        
