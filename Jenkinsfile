@@ -73,16 +73,20 @@ pipeline {
             }
         }
         
-        stage('Pull artifacts & deploy on tomcat') {
+        stage('Pull artifacts from Nexus') {
             steps{
-                  withCredentials([usernamePassword(credentialsId: 'my-tomcat-cred',
+                withCredentials([usernamePassword(credentialsId: 'my-tomcat-cred',
                                       usernameVariable: 'USERNAME',
-                                      passwordVariable: 'PASSWORD')]) {
-                                
+                                      passwordVariable: 'PASSWORD')]) {        
                     sh 'curl -u ' + USERNAME + ':' + PASSWORD + ' -X GET "http://192.168.62.188:8081/repository/maven-nexus-repo/com/myweb/app/my-web/1.0/my-web-1.0.war" --output my-web.war'
-                    sh 'scp ${WORKSPACE}/my-web.war revit@192.168.62.203:/opt/tomcat/webapps'
+               }
+           }
+       }
+
+       stage('Deploy war on Tomcat'){
+            steps{
+                 sh 'scp ${WORKSPACE}/my-web.war revit@192.168.62.203:/opt/tomcat/webapps'
             }
-          }
        }
        
     }
