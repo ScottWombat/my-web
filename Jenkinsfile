@@ -89,9 +89,9 @@ pipeline {
             //}
             steps{
            sshagent(credentials : ['new_cred1']) {
-            sh 'scp ${WORKSPACE}/my-web.war revit@192.168.62.203:/opt/tomcat/webapps'
+                sh 'scp ${WORKSPACE}/my-web.war revit@192.168.62.203:/opt/tomcat/webapps'
+                }
            }
-    }
        }
        
     }
