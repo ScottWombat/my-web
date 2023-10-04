@@ -89,8 +89,7 @@ pipeline {
             //}
             steps{
            sshagent(credentials : ['my-tomcat-cred']) {
-            sh 'ssh -o StrictHostKeyChecking=no revit@192.168.62.203 uptime'
-            sh 'ssh -v revit@h192.168.62.203'
+            sh 'ssh -v revit@192.168.62.203'
             sh 'scp ${WORKSPACE}/my-web.war revit@192.168.62.203:/opt/tomcat/webapps'
            }
     }
