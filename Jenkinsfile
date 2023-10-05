@@ -87,11 +87,37 @@ pipeline {
             //steps{
             //     sh 'scp ${WORKSPACE}/my-web.war revit@192.168.62.203:/opt/tomcat/webapps'
             //}
-            steps{
+        steps{
            sshagent(credentials : ['new_cred1']) {
                 sh 'scp ${WORKSPACE}/my-web.war revit@192.168.62.203:/opt/tomcat/webapps'
                 }
            }
+       }
+       //stage("deploy-dev"){
+        //             steps{
+        //                sshagent(['user-id-tomcat-deployment']) {
+        //                sh """
+        //                scp -o StrictHostKeyChecking=no target/UI.war
+        //                root@192.168.1.000:/opt/tomcat/webapps/
+        //                ssh root@192.168.1.000 /opt/tomcat/bin/shutdown.sh
+        //                ssh root@192.168.1.000 /opt/tomcat/bin/startup.sh
+        //                 """
+        //                  }
+        //                }
+      // }
+       stage("Build docker"){
+            steps{
+                sh 'docker build -t  myweb123/javapp .'
+            }
+       }
+
+       stage("Push container to Docker hub"){
+            steps{
+                withCredentials([string(credentialsId: docker_credential, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh 'docker login -u USERNAME -p PASSWORD'
+                    sh 'docker push myweb123/javapp'
+                }
+            }
        }
        
     }

@@ -17,3 +17,5 @@ host-manger.xml
 2. Add host-manager.xml to /opt/tomcat/conf/Catalina/localhost/
 
 3. User must be 'manager-script' role
+
+https://avsitter.github.io/mydoc_no_password_prompts_scp.html
