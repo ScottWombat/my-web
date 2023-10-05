@@ -113,7 +113,9 @@ pipeline {
 
        stage("Push container to Docker hub"){
             steps{
-                withCredentials([string(credentialsId: docker_credential, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'docker_credential',
+                                      usernameVariable: 'USERNAME',
+                                      passwordVariable: 'PASSWORD')]){
                     sh 'docker login -u USERNAME -p PASSWORD'
                     sh 'docker push myweb123/javapp'
                 }
