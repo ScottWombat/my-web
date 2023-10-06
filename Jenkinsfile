@@ -107,8 +107,8 @@ pipeline {
       // }
        stage("Build docker"){
             steps{
-                sh 'docker build -t  myweb .'
-                sh 'docker image tag myweb scottwomat/myweb:latest'
+                sh 'docker build -t  myapp .'
+                sh 'docker image tag myapp scottwomat/myapp:latest'
             }
        }
 
@@ -119,7 +119,7 @@ pipeline {
                                       passwordVariable: 'PASSWORD')]){
                     sh 'echo ' + PASSWORD + ' | docker login -u ' + USERNAME + ' --password-stdin docker.io'
                     //sh 'docker login -u ' + USERNAME + '-p ' + PASSWORD
-                    sh 'docker push scottwombat/myweb:latest'
+                    sh 'docker push scottwombat/myapp:latest'
                 }
             }
        }
