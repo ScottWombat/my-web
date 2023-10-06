@@ -116,6 +116,8 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'docker_credential',
                                       usernameVariable: 'USERNAME',
                                       passwordVariable: 'PASSWORD')]){
+                    sh 'echo $USERNAME'
+                    sh 'echo $PASSWORD'
                     sh 'docker login -u USERNAME -p PASSWORD'
                     sh 'docker push myweb123/javapp'
                 }
