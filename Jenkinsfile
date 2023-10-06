@@ -126,6 +126,7 @@ pipeline {
        stage("buiddld"){
             steps{
                 sh 'echo ddd'
+                sh 'docker run --rm -e CI=true scottwombat/myweb-1:1.0.0'
             }
        }
     }
