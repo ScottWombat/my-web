@@ -107,7 +107,7 @@ pipeline {
       // }
        stage("Build docker"){
             steps{
-                sh 'docker build -t  myweb123/javapp:0.0.1 .'
+                sh 'docker build -t  myweb .'
             }
        }
 
@@ -118,7 +118,7 @@ pipeline {
                                       passwordVariable: 'PASSWORD')]){
                     sh 'echo ' + PASSWORD + ' | docker login -u ' + USERNAME + ' --password-stdin docker.io'
                     //sh 'docker login -u ' + USERNAME + '-p ' + PASSWORD
-                    sh 'docker push scottwombat//myweb123/javapp:0.0.1'
+                    sh 'docker push scottwombat/myapp:myweb'
                 }
             }
        }
