@@ -107,7 +107,7 @@ pipeline {
       // }
        stage("Build docker"){
             steps{
-                sh 'docker build -t  myweb123/javapp .'
+                sh 'docker build -t  myweb123/javapp:0.0.1 .'
             }
        }
 
