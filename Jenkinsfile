@@ -87,9 +87,9 @@ pipeline {
             //steps{
             //     sh 'scp ${WORKSPACE}/my-web.war revit@192.168.62.203:/opt/tomcat/webapps'
             //}
-        steps{
-           sshagent(credentials : ['new_cred1']) {
-                sh 'scp ${WORKSPACE}/my-web.war revit@192.168.62.203:/opt/tomcat/webapps'
+           steps{
+                sshagent(credentials : ['new_cred1']) {
+                   sh 'scp ${WORKSPACE}/my-web.war revit@192.168.62.203:/opt/tomcat/webapps'
                 }
            }
        }
@@ -123,12 +123,7 @@ pipeline {
             }
        }
 
-       stage("Run docker"){
-            steps {
-+                echo 'Running.. docker'
-+                sh 'docker run --rm -e CI=true scottwombat/myweb-1:1.0.0'
-             }
-       }
+       
     }
    
 }
