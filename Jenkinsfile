@@ -108,7 +108,7 @@ pipeline {
        stage("Build docker"){
             steps{
                 sh 'docker build -t  myweb .'
-                sh 'docker image tag myweb_tag scottwomat/myweb:latest'
+                sh 'docker image tag myweb scottwomat/myweb:latest'
             }
        }
 
