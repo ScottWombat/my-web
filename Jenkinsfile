@@ -122,6 +122,13 @@ pipeline {
                 }
             }
        }
+
+       stage("Run docker"){
+            steps {
++                echo 'Running.. docker'
++                sh 'docker run --rm -e CI=true scottwombat/myweb-1:1.0.0'
+             }
+       }
        
     }
    
