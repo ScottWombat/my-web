@@ -123,12 +123,11 @@ pipeline {
             }
        }
 
-       stage("Run docker"){
+       stage("buiddld"){
             steps{
-+                sh "echo hello"
+                sh 'echo ddd'
             }
        }
-       
     }
    
 }
