@@ -125,7 +125,7 @@ pipeline {
 
        stage("Run docker"){
             steps{
-+                sh 'echos hello'
++                sh "echo hello"
             }
        }
        
